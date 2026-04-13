@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Prueba Clarity Completa</title>
+
+```
+<!-- Microsoft Clarity (REEMPLAZA TU_PROJECT_ID) -->
+<script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;
+        t.src="https://www.clarity.ms/tag/vnhox7oby0";
+        y=l.getElementsByTagName(r)[0];
+        y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script");
+</script>
+```
+
+</head>
+
+<body style="font-family: Arial; text-align: center; margin-top: 50px;">
+
+```
+<h1>Prueba Microsoft Clarity</h1>
+<p>Haz clic en el botón para simular un usuario</p>
+
+<button onclick="enviarDatos()" style="padding: 10px 20px; font-size: 16px;">
+    Generar Usuario
+</button>
+
+<p id="resultado" style="margin-top: 20px; font-weight: bold;"></p>
+
+<script>
+    function generarCedulaAleatoria() {
+        return Math.floor(1000000000 + Math.random() * 9000000000).toString();
+    }
+
+    function enviarDatos() {
+        let cedula = generarCedulaAleatoria();
+        let tipoUsuario = Math.random() > 0.5 ? "cliente" : "prospecto";
+
+        // Mostrar en pantalla
+        document.getElementById("resultado").innerHTML = 
+            "Cédula: " + cedula + "<br>Tipo: " + tipoUsuario;
+
+        console.log("Cédula enviada:", cedula);
+        console.log("Tipo usuario:", tipoUsuario);
+
+        // Esperar a que Clarity esté cargado
+        setTimeout(() => {
+            if (window.clarity) {
+                // Identificar usuario
+                window.clarity('identify', cedula);
+
+                // Propiedades personalizadas (para filtros en Clarity)
+                window.clarity('set', 'cedula', cedula);
+                window.clarity('set', 'tipo_usuario', tipoUsuario);
+            } else {
+                console.warn("Clarity aún no cargó");
+            }
+        }, 1000);
+    }
+</script>
+```
+
+</body>
+</html>
